@@ -44,7 +44,7 @@ class EmbeddingsHandler:
         self.logger.info("embeddings prepared")
         self.logger.debug(f"Shape: {embeddings.shape}")
 
-        return embeddings
+        return embeddings.tolist()
 
     @staticmethod
     def cosine_similarity(_array1, _array2):

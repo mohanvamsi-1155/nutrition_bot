@@ -18,3 +18,5 @@ PICKLE_FILE_PATH = "storage/"
 ################
 
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+COLLECTION_NAME = "nutrition_chunks"
+PERSISTENT_CHROMA_STORAGE = "/media/mohan/NewVolume/zenoti_study/nutrition_bot/storage/chromaDB"

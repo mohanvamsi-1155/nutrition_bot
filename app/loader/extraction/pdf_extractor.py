@@ -16,6 +16,7 @@ class PDFDataExtractor(Extractor):
     def extract_info(self):
         try:
             chunks = []
+            file_name = self.pdf_path.split("/")[-1] if len(self.pdf_path.split("/")) > 1 else self.pdf_path
             elements = partition(self.pdf_path)
             for element in elements:
                 if element.category not in self._SUPPORTED_CATEGORIES_:
@@ -23,10 +24,10 @@ class PDFDataExtractor(Extractor):
                 # compute embeddings
                 embeddings = self.create_embeddings([element.text])
                 chunks.append(
-                    Chunk(chunk_metadata=element.text, chunk_embeddings=embeddings, chunk_summary="")
+                    Chunk(chunk_text=element.text, chunk_embeddings=embeddings, chunk_metadata={"source": file_name})
                 )
-            self.dump_data_to_pickle(chunks)
-            return self.load_data_from_pickle()
+            return chunks
 
         except Exception as e:
             self.logger.exception(f"Unhandled Exception : {e}")
+            raise

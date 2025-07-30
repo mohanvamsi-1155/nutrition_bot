@@ -3,12 +3,12 @@ from app.config import SupportedMIMETypes
 
 
 class WebCrawlExtractor(Extractor):
-    def __init__(self, file_url):
+    def __init__(self, http_url):
         super().__init__(SupportedMIMETypes.HTML.value)
-        self.file_url = file_url
+        self.http_url = http_url
 
     def extract_info(self):
-        pass
+        NotImplemented()
 
     def save_data_to_pickle(self):
-        pass
+        NotImplemented()
