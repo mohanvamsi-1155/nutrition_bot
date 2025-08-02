@@ -54,7 +54,7 @@ class ChromaHelper:
     def fetch_data(self, query_embedding) -> QueryResult:
         _collection = self.get_or_create_collection()
         results = _collection.query(
-            query_embeddings=[query_embedding],
+            query_embeddings=query_embedding,
             n_results=3,
             include=["distances", "documents", "embeddings"]
         )

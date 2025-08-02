@@ -92,6 +92,6 @@ class Loader:
 
 
 if __name__ == "__main__":
-    file_path = "/media/mohan/NewVolume/zenoti_study/nutrition_bot/docs/Aspartame_Risks.pdf"
+    file_path = "/media/mohan/NewVolume/zenoti_study/nutrition_bot/docs/caffeine_on_health.pdf"
     print(ExtractorMapper.invoke_mapper_class(mime_type="PDF", payload=DataLoaderMethod(
         **{"mime_type": "PDF", "pdf_path": file_path})))

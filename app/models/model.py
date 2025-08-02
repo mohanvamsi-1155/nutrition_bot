@@ -40,3 +40,7 @@ class DataLoaderMethod(BaseModel):
             raise ValidationError(f"Mandatory params missing for MIME type {self.mime_type} : csv_file_path")
 
         return self
+
+class DataSearcherMethod(BaseModel):
+    query: str = Field(...)
+    metadata: Optional[dict] = Field(default={})
