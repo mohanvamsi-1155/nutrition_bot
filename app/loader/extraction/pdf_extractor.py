@@ -3,10 +3,11 @@ from app.config import SupportedMIMETypes
 from unstructured.partition.auto import partition
 import app.decorators.timing as decorator
 from app.helper.utils.chunk_processor import Chunk
+from nltk.tokenize import sent_tokenize
 
 import nltk
+
 nltk.download("punkt")
-from nltk.tokenize import sent_tokenize
 
 
 class PDFDataExtractor(Extractor):

@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from app.helper.utils.logger import Logger
+from typing import List
 
 from app.config import PICKLE_FILE_PATH
 from app.helper.utils.chunk_processor import Chunk
-import json
 import time
 from app.helper.data.pickle_helper import PickleHandler
 from app.ai.embeddings_handler import EmbeddingsHandler
@@ -20,7 +20,7 @@ class Extractor(ABC):
     def extract_info(self):
         pass
 
-    def dump_data_to_pickle(self, chunks: list[Chunk]):
+    def dump_data_to_pickle(self, chunks: List[Chunk]):
         try:
             self.logger.debug(f"Formatted Chunks {len(chunks)}")
             _pickle_obj = {

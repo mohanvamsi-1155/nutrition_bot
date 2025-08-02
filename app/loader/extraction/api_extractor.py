@@ -1,3 +1,5 @@
+from typing import List
+
 from app.loader.extraction.base import Extractor
 from app.config import SupportedMIMETypes
 import requests
@@ -46,7 +48,7 @@ class APIExtractor(Extractor):
 
     @decorator.timing
     def chunk_data(self, response_text):
-        chunks: list[Chunk] = []
+        chunks: List[Chunk] = []
         for sentence in sent_tokenize(response_text):
             embeddings = self.create_embeddings([sentence])
             chunks.append(Chunk(chunk_text=sentence, chunk_embeddings=embeddings))
