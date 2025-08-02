@@ -49,7 +49,7 @@ class APIExtractor(Extractor):
         chunks: list[Chunk] = []
         for sentence in sent_tokenize(response_text):
             embeddings = self.create_embeddings([sentence])
-            chunks.append(Chunk(chunk_metadata=sentence, chunk_embeddings=embeddings))
+            chunks.append(Chunk(chunk_text=sentence, chunk_embeddings=embeddings))
 
         return chunks
 

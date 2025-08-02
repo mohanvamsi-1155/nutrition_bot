@@ -1,7 +1,5 @@
 from app.helper.utils.logger import Logger
 
-from torch import Tensor
-
 from app.config import EMBEDDING_MODEL
 from sentence_transformers import SentenceTransformer
 import dataclasses as dc
@@ -23,7 +21,7 @@ class EmbeddingsHandler:
         self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
 
     @decorator.timing
-    def encode_sentence(self, sentence: str) -> Tensor:
+    def encode_sentence(self, sentence: str):
         if not self.embedding_model:
             self.logger.info("model instance not found, loading")
             self.load_model()
@@ -32,7 +30,7 @@ class EmbeddingsHandler:
         self.logger.info("embeddings prepared")
         self.logger.debug(f"Shape: {embeddings.shape}")
 
-        return embeddings
+        return embeddings.tolist()
 
     @decorator.timing
     def encode_sentences(self, sentences: list):
@@ -44,7 +42,7 @@ class EmbeddingsHandler:
         self.logger.info("embeddings prepared")
         self.logger.debug(f"Shape: {embeddings.shape}")
 
-        return embeddings
+        return embeddings.tolist()
 
     @staticmethod
     def cosine_similarity(_array1, _array2):

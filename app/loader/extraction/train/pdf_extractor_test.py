@@ -11,7 +11,9 @@ def read_pdf_lines_pypdf2(pdf_path):
 
                 lines = text.splitlines()
                 for line in lines:
+                    print("LINE START : ")
                     print(line)
+                    print("LINE END : ")
             break
 
     # Example usage:
@@ -31,6 +33,4 @@ elements = partition("../../../../docs/caffeine_on_health.pdf")
 
 print("\n\n".join([str(el) for el in elements[:10]]))
 
-
 print((time.time() - s) * 1000)
-
